@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🎉 PRANK</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { 
+      background: #000; 
+      overflow: hidden;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    video {
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover;
+    }
+  </style>
+</head>
+<body>
+  <video id="prankVideo" autoplay loop playsinline>
+    <source src="pranks/KARLSONVIBE/video.mp4" type="video/mp4">
+  </video>
+  <script>
+    // Auto-play, handle errors gracefully
+    const video = document.getElementById('prankVideo');
+    video.play().catch(() => {
+      // Try again on user interaction
+      document.addEventListener('click', () => video.play(), { once: true });
+    });
+  </script>
+</body>
+</html>
