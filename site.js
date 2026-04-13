@@ -1,6 +1,7 @@
 const videoEl = document.getElementById("prankVideo");
 const videoSourceEl = document.getElementById("videoSource");
 const fallbackEl = document.getElementById("fallback");
+const unmuteButtonEl = document.getElementById("unmuteButton");
 
 function normalizePath(pathname) {
   return pathname.replace(/\/+$/, "").toLowerCase() || "/";
@@ -16,6 +17,7 @@ async function boot() {
   if (currentPath === "/" || currentPath === "/index.html") {
     fallbackEl.classList.remove("hidden");
     videoEl.classList.add("hidden");
+    unmuteButtonEl.classList.add("hidden");
     return;
   }
 
@@ -26,6 +28,7 @@ async function boot() {
   if (!prank) {
     fallbackEl.classList.remove("hidden");
     videoEl.classList.add("hidden");
+    unmuteButtonEl.classList.add("hidden");
     return;
   }
 
@@ -40,6 +43,23 @@ async function boot() {
   } catch (_error) {
     // Most browsers allow autoplay due to muted=true.
   }
+
+  unmuteButtonEl.classList.remove("hidden");
+  unmuteButtonEl.addEventListener(
+    "click",
+    async () => {
+      videoEl.muted = false;
+      videoEl.volume = 1;
+      try {
+        await videoEl.play();
+      } catch (_error) {
+        // Keep button visible if audio still requires another interaction.
+        return;
+      }
+      unmuteButtonEl.classList.add("hidden");
+    },
+    { once: false }
+  );
 }
 
 boot();

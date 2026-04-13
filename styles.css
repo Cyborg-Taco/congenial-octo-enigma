@@ -25,6 +25,20 @@ body {
   object-fit: cover;
 }
 
+.unmute-button {
+  position: fixed;
+  left: 50%;
+  bottom: 2rem;
+  transform: translateX(-50%);
+  border: 1px solid #2d2d2d;
+  border-radius: 999px;
+  background: rgba(10, 10, 10, 0.85);
+  color: #fff;
+  padding: 0.7rem 1rem;
+  cursor: pointer;
+  z-index: 5;
+}
+
 .fallback {
   text-align: center;
   padding: 2rem;
