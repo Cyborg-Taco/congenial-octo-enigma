@@ -1,37 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>🎉 PRANK</title>
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { 
-      background: #000; 
-      overflow: hidden;
-      height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    video {
-      width: 100vw;
-      height: 100vh;
-      object-fit: cover;
-    }
-  </style>
-</head>
-<body>
-  <video id="prankVideo" autoplay loop playsinline muted>
-    <source src="pranks/KARLSONVIBE/video.mp4" type="video/mp4">
-  </video>
-  <script>
-    // Auto-play, handle errors gracefully
-    const video = document.getElementById('prankVideo');
-    video.play().catch(() => {
-      // Try again on user interaction
-      document.addEventListener('click', () => video.play(), { once: true });
-    });
-  </script>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>🎉 PRANK</title>
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      body { 
+        background: #000; 
+        overflow: hidden;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      video {
+        display: none;
+        width: 100vw;
+        height: 100vh;
+        object-fit: cover;
+      }
+      #startBtn {
+        padding: 2rem 4rem;
+        font-size: 2rem;
+        background: #f00;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+        border-radius: 1rem;
+        animation: pulse 0.5s infinite alternate;
+      }
+      @keyframes pulse {
+        from { transform: scale(1); }
+        to { transform: scale(1.1); }
+      }
+    </style>
+  </head>
+  <body>
+    <button id="startBtn">🔊 CLICK TO PRANK</button>
+    <video id="prankVideo" loop playsinline>
+      <source src="/pranks/KARLSONVIBE/video.mp4" type="video/mp4">
+    </video>
+    <script type="module" src="/main.js"></script>
+  </body>
 </html>
