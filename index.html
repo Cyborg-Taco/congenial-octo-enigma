@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Prank Site</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <main class="page prank-page">
+      <video
+        id="prankVideo"
+        class="prank-video"
+        autoplay
+        muted
+        loop
+        playsinline
+        controlslist="nodownload noplaybackrate"
+      >
+        <source id="videoSource" src="" type="video/mp4" />
+        Your browser does not support HTML5 video.
+      </video>
+      <div id="fallback" class="fallback hidden">
+        <h1>Prank not found</h1>
+        <p>Check `/stats` for available prank URLs.</p>
+      </div>
+    </main>
+
+    <script src="/site.js"></script>
+  </body>
+</html>
